@@ -1,0 +1,15 @@
+{
+  "image": "mcr.microsoft.com/devcontainers/universal:2",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "marp-team.marp-vscode",
+        "tyriar.luna-paint",
+        "bierner.markdown-mermaid",
+        "shd101wyy.markdown-preview-enhanced",
+        "corschenzi.mermaid-graphical-editor",
+        "github.vscode-github-actions"
+      ]
+    }
+  }
+}

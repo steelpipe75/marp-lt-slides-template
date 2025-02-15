@@ -1,0 +1,56 @@
+name: Convert Marp Markdown to PDF
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  convert:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install Marp CLI
+        run: npm install -g @marp-team/marp-cli
+
+      - name: Install Japanese fonts
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y fonts-noto-cjk
+
+      - name: Convert Markdown to PDF
+        run: |
+          mkdir -p pdf
+          if [[ ! -f target.txt ]]; then
+            echo "target.txt not found! Skipping conversion."
+            exit 0
+          fi
+          dir_of_target=$(dirname "$(realpath target.txt)")
+          cat target.txt | while read -r file; do
+            if [[ -f "$file" ]]; then
+              dir=$(dirname "$file")
+              base=$(basename "$file" .md)
+              output="pdf/${dir//\//_}_${base}.pdf"
+              echo "Converting $file -> $output"
+              (cd "$dir" && marp --pdf --html --allow-local-files "$base.md" -o "$dir_of_target/$output")
+            else
+              echo "Warning: File '$file' not found, skipping."
+            fi
+          done
+
+      - name: Commit and push PDF files
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          git add pdf/*.pdf
+          git commit -m "Convert Markdown to PDF" || echo "No changes to commit"
+          git push
