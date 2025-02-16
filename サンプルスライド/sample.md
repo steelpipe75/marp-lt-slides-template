@@ -268,7 +268,7 @@ graph LR
 ```
 
 <span style="font-size: 20px;">\<div class="mermaid"\>〜\</div\>のやり方が、プレビューはうまくできてもGitHub Actions でPDF変換がうまくいかない</span>
-<span style="font-size: 20px;">krokiで描画させたSVGをダウンロードして貼り付けるほう方法で対応</span>
+<span style="font-size: 20px;">krokiで描画させたSVGをダウンロードして貼り付ける方法で対応</span>
 
 <!---
 https://kroki.io/mermaid/svg/eNpLL0osyFDwCeJSUMjLT0mNN9SIVnrctOFx8x6lWE2YoBFIsLnxcfPyx01rkcSNweITURUbKujq2tU87Z77uHFJDVQ_3CBMOWO4YZhyhgB-SDxo
