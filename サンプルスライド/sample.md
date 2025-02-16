@@ -267,15 +267,13 @@ graph LR
   node_3 -->|勝つ| node_1
 ```
 
-<div class="mermaid">
-graph LR
-  node_1(["グー"])
-  node_2(["チョキ"])
-  node_3(["パー"])
-  node_1 -->|勝つ| node_2
-  node_2 -->|勝つ| node_3
-  node_3 -->|勝つ| node_1
-</div>
+<span style="font-size: 20px;">\<div class="mermaid"\>〜\</div\>のやり方が、プレビューはうまくできてもGitHub Actions でPDF変換がうまくいかない</span>
+<span style="font-size: 20px;">krokiで描画させたSVGをダウンロードして貼り付けるほう方法で対応</span>
+
+<!---
+https://kroki.io/mermaid/svg/eNpLL0osyFDwCeJSUMjLT0mNN9SIVnrctOFx8x6lWE2YoBFIsLnxcfPyx01rkcSNweITURUbKujq2tU87Z77uHFJDVQ_3CBMOWO4YZhyhgB-SDxo
+--->
+![mermaid_sample_graph.svg](./mermaid_sample_graph.svg)
 
 ---
 
